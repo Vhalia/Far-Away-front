@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Component
-@FeignClient(name = "far-away-comments", url = "localhost:9000")
+@FeignClient(name = "far-away-gateway", url = "localhost:9007")
 public interface CommentProxy {
 
     @GetMapping("/comments")
