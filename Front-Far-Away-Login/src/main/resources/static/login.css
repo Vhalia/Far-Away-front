@@ -1,0 +1,24 @@
+:root {
+    --water-bg : #013A63;
+    --yellow : #FFEB72;
+}
+
+body {
+    font-family: "Product Sans", sans-serif !important;
+    color: white;
+    background-color: var(--water-bg);
+
+}
+
+nav {
+    font-size: 1.2em;
+}
+
+a {
+    color: white !important;
+}
+
+a:hover, .nav a:hover {
+    color: var(--yellow) !important;
+    border: none !important;
+}
