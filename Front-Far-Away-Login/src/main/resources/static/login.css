@@ -3,22 +3,7 @@
     --yellow : #FFEB72;
 }
 
-body {
-    font-family: "Product Sans", sans-serif !important;
-    color: white;
-    background-color: var(--water-bg);
-
-}
-
-nav {
-    font-size: 1.2em;
-}
-
-a {
-    color: white !important;
-}
-
-a:hover, .nav a:hover {
-    color: var(--yellow) !important;
-    border: none !important;
+#login-form, #register-form {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 20px;
 }

@@ -15,5 +15,6 @@ public class User {
     private String address;
     private String mail;
     private String password;
+    private String confirmPassword;
     private boolean admin;
 }
