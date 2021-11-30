@@ -1,0 +1,72 @@
+#darkZone {
+    background-color: #000116;
+}
+
+nav {
+    font-size: 1.2em;
+    background-color: #000116;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+#presentation {
+    padding : 10%;
+}
+
+#title {
+    font-size: 600%;
+}
+
+.vl {
+    border-left: 3px solid white;
+    height: 500px;
+    margin-left: 50%;
+}
+
+.typeSuit {
+    text-decoration: underline;
+    margin-bottom: 10%;
+}
+
+.list {
+    padding : 100px;
+}
+
+.link-center{
+    margin-left: 47.5%;
+}
+
+.flexDisposition{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.flexDisposition div{
+    width: 17%;
+}
+
+.biggerFont{
+    font-size: 120%;
+}
+
+#astronauteDauphin{
+    z-index: 1;
+    width: 15%;
+    margin-top: -12%;
+}
+
+#astronauteVolant{
+    z-index: 1;
+    width: 15%;
+}
+
+#formsDisplay{
+    width: 70%;
+}
+
+#maxValue, #minValue{
+    font-size: 110%;
+}
