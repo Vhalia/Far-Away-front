@@ -45,8 +45,8 @@
             </ul>
         </div>
         <div id="product-buttons" >
-            <button type="button" class="btn btn-danger">Supprimer le produit</button>
             <button type="button" class="btn btn-secondary">Modifier le produit</button>
+            <button type="button" class="btn btn-danger">Supprimer le produit</button>
             <button type="button" class="btn btn-primary">Ajouter au panier</button>
         </div>
     </div>
@@ -59,14 +59,28 @@
         </div>
         <h4>Mes commentaires</h4>
         <div id="my-comments">
+            <div id="my-old-comments" class="container">
+                <div>
+                    <b>Evaluation : </b>
+                    <p>../5</p>
+                    <b>Commentaire : </b>
+                    <p>Blablabla</p>
+                </div>
+                <div id="my-old-comments-buttons">
+                    <button type="button" class="btn btn-secondary">Modifier le commentaire</button>
+                    <button type="button" class="btn btn-danger">Supprimer le commentaire</button>
+                </div>
+            </div>
+            <hr>
             <form id="add-comment">
                 <input type="text" name="new-comment" placeholder="Ajouter un commentaire"><br>
                 <label for="evaluation">Evaluation du produit (entre 1 and 5) :</label>
                 <input type="number" id="evaluation" name="evaluation" min="1" max="5"><br>
-                <input type="submit" value="Ajouter">
+                <input type="submit" class="btn btn-secondary" value="Ajouter">
             </form>
         </div>
         <hr>
+        <h4>Commentaires et évaluations des utilisateurs</h4>
         <div id="other-comments">
             <div id="other-comment-evaluation" class="container">
                 <div>
