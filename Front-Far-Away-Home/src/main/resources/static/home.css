@@ -70,3 +70,33 @@ nav {
 #maxValue, #minValue{
     font-size: 110%;
 }
+
+/*add suit page*/
+
+.addSuitTitle{
+    font-size: 170%;
+}
+
+#addingForm{
+
+}
+
+.inputAdd{
+    width: 70%;
+}
+
+#addBorder{
+    margin-left: 3%;
+    margin-right: 7%;
+    margin-top: 8%;
+    padding: 5%;
+    border-radius: 10px;
+    border : solid white 2px;
+}
+
+#astronauteDauphinAdd{
+    z-index: 1;
+    width: 15%;
+    margin-top: -12%;
+    margin-left: 75%;
+}

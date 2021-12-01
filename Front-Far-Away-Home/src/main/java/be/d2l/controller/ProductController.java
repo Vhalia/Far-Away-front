@@ -5,9 +5,9 @@ import be.d2l.proxy.ProductProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -29,5 +29,24 @@ public class ProductController {
         model.addAttribute("productListSpace", proxy.getProducts("espace", min, max, order));
         model.addAttribute("productListSubmarine", proxy.getProducts("sous-marin", min, max, order));
         return "home";
+    }
+
+    @GetMapping("addSuit")
+    public String AddingPage(Model model){
+        model.addAttribute("suit", new Product());
+        return "addSuit";
+    }
+
+    @PostMapping("suits")
+    public ModelAndView createSuit(@ModelAttribute Product suit){
+        proxy.createProduct(suit);
+        //return new ModelAndView(new RedirectView("http://localhost:8002"));
+        return new ModelAndView("redirect:/");
+    }
+
+    @PostMapping("delete/suits/{id}")
+    public ModelAndView deleteSuit(@PathVariable("id") int id, Model model){
+        proxy.deleteProduct(id);
+        return new ModelAndView("redirect:/");
     }
 }

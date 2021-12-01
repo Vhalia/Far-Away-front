@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"lang="fr">
+<html html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>home</title>
@@ -61,9 +61,14 @@
                     <p>Nothing in space for the moment</p>
                 </div>
                 <div th:each="suit : ${productListSpace}">
+                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
+                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                        <button class="btn-primary" type="submit">X</button>
+                    </form>
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
+
                     <button class="btn-primary">Plus d'informations</button>
                 </div>
             </div>
@@ -79,6 +84,10 @@
                     <p>Nothing under water for the moment</p>
                 </div>
                 <div th:each="suit : ${productListSubmarine}">
+                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
+                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                        <button class="btn-primary" type="submit">X</button>
+                    </form>
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
@@ -88,7 +97,7 @@
         </div>
         
     </div>
-
+    <a th:href="@{/addSuit}"> ajouter un scaphandre</a>
 
     <script type="text/javascript">
 

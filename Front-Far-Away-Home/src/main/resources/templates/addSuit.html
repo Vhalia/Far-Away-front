@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un scaphandre</title>
+</head>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link th:href="@{style.css}" rel="stylesheet">
+<link th:href="@{home.css}" rel="stylesheet">
+<link th:href="@{font/ProductSansRegular.ttf}">
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img th:src="@{image/logo-space.png}" alt="logo far away" width="60" height="50"/>
+        </div>
+        <div>
+            <ul class="nav justify-content-center">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Accueil</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="addBorder">
+        <div>
+            <p class="addSuitTitle"> Ajouter un scaphandre en ligne: </p>
+
+            <form action="#" id="addingForm" th:action="@{/suits}" th:object="${suit}" method="post">
+                <p><input class ="inputAdd" type="text" style="" placeholder="nom du produit" th:field="*{name}"></p>
+                <p><input class ="inputAdd" type="number" step="0.01" style="" placeholder="prix" th:field="*{price}"></p>
+                <p><input class ="inputAdd" type="text" style="" placeholder="categorie" th:field="*{category}"></p>
+                <p><input class ="inputAdd" type="text" style="" placeholder="courte description" th:field="*{shortDescription}"></p>
+                <p><input class ="inputAdd" type="text" style="" placeholder="description détaillée" th:field="*{detailedDescription}"></p>
+                <button class="btn-primary" type="submit">confirmer l'ajout</button>
+            </form>
+        </div>
+        <img id="astronauteDauphinAdd" th:src="@{image/astronauteDauphin.png}" alt="astronaute dauphin"/>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
