@@ -45,7 +45,7 @@ public class AuthenticationController {
         String token = jsonMapper.convertValue(node.get("token"), String.class);
         Cookie cookie = util.createCookie(token);
         response.addCookie(cookie);
-        return new ModelAndView(new RedirectView("http://localhost:8003/"));
+        return new ModelAndView(new RedirectView("http://localhost:8002/"));
     }
 
     @PostMapping("/authentication/register")

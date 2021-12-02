@@ -36,7 +36,18 @@
         <form id="addingForm" method="post" th:action="@{/update/{id}(id=${suit.getId()})}" th:object="${suit}">
             <p><input class ="inputAdd" type="text" style="" th:value="${suit.getName()}" th:field="*{name}"></p>
             <p><input class ="inputAdd" type="number" step="0.01" style="" th:value="${suit.getPrice()}" th:field="*{price}"></p>
-            <p><input class ="inputAdd" type="text" style="" th:value="${suit.getCategory()}" th:field="*{category}"></p>
+            <label for="cat-select">Catégorie:</label>
+            <select th:field="*{category}" name="categories" id="cat-select">
+                <span th:if="${suit.getCategory() == 'sous-marin'}">
+                    <option selected th:value="'sous-marin'" th:text="Sous-marin"></option>
+                    <option th:value="'espace'" th:text="Espace"></option>
+                </span>
+                <span th:if="${suit.getCategory() == 'espace'}">
+                    <option th:value="'sous-marin'" th:text="Sous-marin"></option>
+                    <option selected th:value="'espace'" th:text="Espace"></option>
+                </span>
+
+            </select>
             <p><input class ="inputAdd" type="text" style=""  th:value="${suit.getShortDescription()}" th:field="*{shortDescription}"></p>
             <p><input class ="inputAdd" type="text" style="" th:value="${suit.getDetailedDescription()}" th:field="*{detailedDescription}"></p>
             <button class="btn-primary" type="submit">confirmer la modification</button>
