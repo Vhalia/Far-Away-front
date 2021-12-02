@@ -25,13 +25,16 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/users}">Test</a>
+                </li>
             </ul>
         </div>
     </nav>
     <main>
         <div class="container d-flex" id="forms">
             <div class="container" id="login">
-                <form method="post" th:action="@{/users/login}" th:object="${user}" class="d-flex flex-column align-items-center" id="login-form">
+                <form method="post" th:action="@{/authentication/login}" th:object="${user}" class="d-flex flex-column align-items-center" id="login-form">
                     <h1 class="m-5">CONNECTEZ-VOUS</h1>
                     <div class="form-group">
                         <input id="login-email" th:field="*{mail}" type="text" placeholder="Email" value="" required/>
@@ -43,7 +46,7 @@
                 </form>
             </div>
             <div class="container" id="register">
-                <form method="post" th:action="@{/users/register}" th:object="${user}" class="d-flex flex-column align-items-center" id="register-form">
+                <form method="post" th:action="@{/authentication/register}" th:object="${user}" class="d-flex flex-column align-items-center" id="register-form">
                     <h1 class="m-5">INSCRIVEZ-VOUS</h1>
                     <div class="form-group">
                         <input id="register-name" th:field="*{surname}" type="text" placeholder="Nom" value="" required/>
