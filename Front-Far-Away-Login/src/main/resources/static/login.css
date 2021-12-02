@@ -1,0 +1,9 @@
+:root {
+    --water-bg : #013A63;
+    --yellow : #FFEB72;
+}
+
+#login-form, #register-form {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 20px;
+}
