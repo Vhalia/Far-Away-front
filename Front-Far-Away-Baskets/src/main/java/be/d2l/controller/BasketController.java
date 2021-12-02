@@ -2,6 +2,7 @@ package be.d2l.controller;
 
 import be.d2l.model.Basket;
 import be.d2l.model.Product;
+import be.d2l.model.User;
 import be.d2l.proxy.BasketProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,5 +61,16 @@ public class BasketController {
         proxy.updateProductQuantity(basketToUpdate, quantity);
         return new ModelAndView("redirect:/" + idUser);
 
+    }
+
+    @PostMapping("/pay/baskets/{idUser}")
+    public String payBasket(Model model, @PathVariable("idUser") int idUser){
+        List<Basket> baskets = (List<Basket>) proxy.getBasketOfUser(idUser);
+        for(Basket basket : baskets){
+            proxy.deleteProductOfBasket(basket);
+        }
+        User user = proxy.getUserByMail("tomalebgdu69@gmail.com"); //a changer
+        model.addAttribute("user", user);
+        return "pay";
     }
 }

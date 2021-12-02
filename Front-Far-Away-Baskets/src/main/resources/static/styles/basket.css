@@ -37,7 +37,10 @@
     margin-right: 5%;
     margin-bottom: 2%;
 }
-
+#text-pay{
+    text-align: center;
+    margin-top: 300px;
+}
 button{
     width: 20%;
 }
