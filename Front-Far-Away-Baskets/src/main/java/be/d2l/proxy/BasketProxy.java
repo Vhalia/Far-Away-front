@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.*;
 public interface BasketProxy {
 
     @GetMapping("/baskets/{idUser}")
-    Iterable<Basket> getBasketOfUser(@PathVariable("idUser") int idUser);
+    Iterable<Basket> getBasketOfUser(@PathVariable("idUser") int idUser,@RequestHeader(name = "Authorization", required = false) String token);
 
     @GetMapping("/suits/{id}")
-    Product getProduct(@PathVariable("id") int id);
+    Product getProduct(@PathVariable("id") int id,@RequestHeader(name = "Authorization", required = false) String token);
 
     @DeleteMapping("/baskets")
-    void deleteProductOfBasket(@RequestBody Basket BasketToDelete);
+    void deleteProductOfBasket(@RequestBody Basket BasketToDelete,@RequestHeader(name = "Authorization", required = false) String token);
 
     @PutMapping("/baskets")
-    Basket updateProductQuantity(@RequestBody Basket BasketToUpdate, @RequestParam int quantity);
+    Basket updateProductQuantity(@RequestBody Basket BasketToUpdate, @RequestParam int quantity,@RequestHeader(name = "Authorization", required = false) String token);
 
     @GetMapping("users/{mail}")
-    User getUserByMail(@PathVariable("mail") String mail);
+    User getUserByMail(@PathVariable("mail") String mail,@RequestHeader(name = "Authorization", required = false) String token);
 
 
 }

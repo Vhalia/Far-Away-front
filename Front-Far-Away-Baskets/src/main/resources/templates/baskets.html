@@ -54,12 +54,13 @@
                 </b>
             </div>
             <div class="button-product flex-fill">
-                <form method="POST" th:action="@{delete/baskets/{idProduct}/1(idProduct=${basket.getIdProduct()})}">
+                <form method="POST" th:action="@{delete/baskets/{idProduct}/{idUser}(idProduct=${basket.getIdProduct()}, idUser=${idUser})}">
                     <button class="btn-primary" type="submit" >Supprimer</button>
                 </form>
                 <br>
                     <input id="newQuantity" th:value="${basket.getQuantity()}" >
                     <input type="hidden" id="idProduct"  th:value="${basket.getIdProduct()}">
+                    <input type="hidden" id="idUser"  th:value="${idUser}">
             </div>
 
         </div>
@@ -68,7 +69,7 @@
             <p th:text="${'Sous-total (' + numberProduct + ' produit(s)) : ' + sumPrice + ' €'}"/>
         </div>
         <div class="prix-button">
-            <form method="POST" th:action="@{pay/baskets/1}">
+            <form method="POST" th:action="@{pay/baskets/{idUser}(idUser=${idUser})}">
                 <button class="btn-primary" type="submit">Passer la commande</button>
             </form>
         </div>
