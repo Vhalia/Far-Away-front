@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +45,7 @@ public class AuthenticationController {
         String token = jsonMapper.convertValue(node.get("token"), String.class);
         Cookie cookie = util.createCookie(token);
         response.addCookie(cookie);
-        //return new ModelAndView(new RedirectView("http://localhost:8002/")); TODO:Redirect to home
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(new RedirectView("http://localhost:8003/"));
     }
 
     @PostMapping("/authentication/register")

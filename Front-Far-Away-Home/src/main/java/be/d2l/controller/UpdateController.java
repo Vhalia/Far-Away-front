@@ -27,8 +27,8 @@ public class UpdateController {
     }
 
     @PostMapping("/{id}")
-    public ModelAndView updateSuit(@PathVariable("id") int id, @ModelAttribute Product product) {
-        proxy.updateProduct(id, product);
+    public ModelAndView updateSuit(@PathVariable("id") int id, @ModelAttribute Product product, @CookieValue(value = "token", defaultValue = "none") String token) {
+        proxy.updateProduct(id, product, token);
         return new ModelAndView("redirect:/");
     }
 }

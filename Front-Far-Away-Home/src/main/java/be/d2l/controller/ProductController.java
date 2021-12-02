@@ -38,15 +38,15 @@ public class ProductController {
     }
 
     @PostMapping("suits")
-    public ModelAndView createSuit(@ModelAttribute Product suit){
-        proxy.createProduct(suit);
+    public ModelAndView createSuit(@ModelAttribute Product suit, @CookieValue(value = "token", defaultValue = "none") String token){
+        proxy.createProduct(suit, token);
         //return new ModelAndView(new RedirectView("http://localhost:8002"));
         return new ModelAndView("redirect:/");
     }
 
     @PostMapping("delete/suits/{id}")
-    public ModelAndView deleteSuit(@PathVariable("id") int id, Model model){
-        proxy.deleteProduct(id);
+    public ModelAndView deleteSuit(@PathVariable("id") int id, Model model, @CookieValue(value = "token", defaultValue = "none") String token){
+        proxy.deleteProduct(id, token);
         return new ModelAndView("redirect:/");
     }
 }

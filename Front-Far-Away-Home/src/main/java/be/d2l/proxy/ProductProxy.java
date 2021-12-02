@@ -17,15 +17,15 @@ public interface ProductProxy {
                               @RequestParam(required = false) String order);
 
     @PostMapping("/suits")
-    void createProduct(@RequestBody Product product);
+    void createProduct(@RequestBody Product product, @RequestHeader(name = "Authorization", required = false) String token);
 
     @DeleteMapping("/suits/{id}")
-    void deleteProduct(@PathVariable("id") int id);
+    void deleteProduct(@PathVariable("id") int id, @RequestHeader(name = "Authorization", required = false) String token);
 
     @GetMapping("/suits/{id}")
     Product getProduct(@PathVariable("id") int id);
 
     @PutMapping("/suits/{id}")
-    void updateProduct(@PathVariable("id") int id, @RequestBody Product product);
+    void updateProduct(@PathVariable("id") int id, @RequestBody Product product, @RequestHeader(name = "Authorization", required = false) String token);
 
 }
