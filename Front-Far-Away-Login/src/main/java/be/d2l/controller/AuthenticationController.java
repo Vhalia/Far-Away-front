@@ -45,7 +45,7 @@ public class AuthenticationController {
         String token = jsonMapper.convertValue(node.get("token"), String.class);
         Cookie cookie = util.createCookie(token);
         response.addCookie(cookie);
-        return new ModelAndView(new RedirectView("http://localhost:8003/" + userLogged.getId())); //TODO:Redirect to home
+        return new ModelAndView(new RedirectView("http://localhost:8002/"));
 
     }
 
@@ -57,7 +57,6 @@ public class AuthenticationController {
         Cookie cookie = util.createCookie(token);
         response.addCookie(cookie);
         model.addAttribute("user", userLogged);
-        //return new ModelAndView(new RedirectView("http://localhost:8002/")); TODO:Redirect to home
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(new RedirectView("http://localhost:8002/"));
     }
 }
