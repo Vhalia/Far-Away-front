@@ -14,32 +14,9 @@
 <link th:href="@{/font/ProductSansRegular.ttf}">
 
 <body>
-<nav class="navbar">
-    <div class="navbar-brand">
-        <img th:src="@{/images/logo-space.png}" alt="logo far away" width="60" height="50"/>
-    </div>
-    <div>
-        <ul class="nav justify-content-center">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil</a> <!--TODO call front home (ajouter tf)-->
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Profil</a> <!--TODO call front profil (ajouter tf)-->
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Panier</a> <!--TODO call front basket (ajouter tf)-->
-            </li>
-        </ul>
-
-    </div>
-</nav>
-
 <div id="text-pay">
     <p th:text="'Merci de votre commande vos articles seront livrés a cette adresse : ' + ${user.getAddress()}">adresse client </p>
-    <button class="btn-primary">Retourner à la page des produits</button>
+    <a th:href="@{/home}"><button class="btn-primary">Retourner à la page d'accueil</button></a>
 </div>
 
 

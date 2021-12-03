@@ -21,7 +21,8 @@ public class UpdateController {
     }
 
     @GetMapping("/{id}")
-    public String update(@PathVariable("id") int id, Model model) {
+    public String update(@PathVariable("id") int id, Model model, @CookieValue(value = "token", defaultValue = "none") String token) {
+        model.addAttribute("connected", !token.equals("none"));
         model.addAttribute("suit", proxy.getProduct(id));
         return "updateSuit";
     }

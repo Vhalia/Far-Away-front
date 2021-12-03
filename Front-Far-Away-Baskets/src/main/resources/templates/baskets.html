@@ -21,16 +21,10 @@
     <div>
         <ul class="nav justify-content-center">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil</a> <!--TODO call front home (ajouter tf)-->
+                <a class="nav-link" th:href="@{/home}">Accueil</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Profil</a> <!--TODO call front profil (ajouter tf)-->
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Panier</a> <!--TODO call front basket (ajouter tf)-->
+                <a class="nav-link">Panier</a>
             </li>
         </ul>
 
@@ -58,9 +52,8 @@
                     <button class="btn-primary" type="submit" >Supprimer</button>
                 </form>
                 <br>
-                    <input id="newQuantity" th:value="${basket.getQuantity()}" >
-                    <input type="hidden" id="idProduct"  th:value="${basket.getIdProduct()}">
-                    <input type="hidden" id="idUser"  th:value="${idUser}">
+                    <input th:attr="data-idprod=${basket.getIdProduct()}, data-iduser=${idUser}"
+                           class="quantity" th:value="${basket.getQuantity()}" >
             </div>
 
         </div>

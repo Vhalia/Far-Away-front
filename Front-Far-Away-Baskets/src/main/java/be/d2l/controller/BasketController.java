@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.List;
 
 @Controller
@@ -58,6 +60,7 @@ public class BasketController {
 
     @GetMapping("/update/baskets/{idUser}/{idProduct}")
     public ModelAndView update(@PathVariable("idProduct") int idProduct, @PathVariable("idUser") int idUser, @RequestParam int quantity,@CookieValue(value = "token", defaultValue = "none") String token){
+        System.out.println("SALUT2");
         Basket basketToUpdate = new Basket();
         basketToUpdate.setIdProduct(idProduct);
         basketToUpdate.setIdUser(idUser);
@@ -76,5 +79,10 @@ public class BasketController {
         User user = proxy.getUserByMail(utils.getStringFromPayloadWithName("mail", token), token);
         model.addAttribute("user", user);
         return "pay";
+    }
+
+    @GetMapping("/home")
+    public ModelAndView toBasketPage(Model model){
+        return new ModelAndView(new RedirectView("http://localhost:8002"));
     }
 }
