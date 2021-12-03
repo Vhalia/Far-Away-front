@@ -60,7 +60,6 @@ public class BasketController {
 
     @GetMapping("/update/baskets/{idUser}/{idProduct}")
     public ModelAndView update(@PathVariable("idProduct") int idProduct, @PathVariable("idUser") int idUser, @RequestParam int quantity,@CookieValue(value = "token", defaultValue = "none") String token){
-        System.out.println("SALUT2");
         Basket basketToUpdate = new Basket();
         basketToUpdate.setIdProduct(idProduct);
         basketToUpdate.setIdUser(idUser);

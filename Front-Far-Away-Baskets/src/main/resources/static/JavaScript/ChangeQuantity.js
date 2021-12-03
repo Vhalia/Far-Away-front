@@ -1,7 +1,6 @@
 $(".quantity").on("change", updateRedirect)
 
 function updateRedirect(e) {
-    console.log(e)
     let idUser = e.target.dataset.iduser
     let idProd = e.target.dataset.idprod
     let url = new URL(window.location.href)
