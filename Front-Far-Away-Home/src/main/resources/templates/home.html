@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link th:href="@{style.css}" rel="stylesheet">
+<link th:href="@{home.css}" rel="stylesheet">
+<link th:href="@{font/ProductSansRegular.ttf}">
+
+<body>
+    <div id="darkZone">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img th:src="@{image/logo-space.png}" alt="logo far away" width="60" height="50"/>
+            </div>
+            <div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Accueil</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="presentation">
+            <h1 class="text-center" id="title">FAR AWAY</h1>
+            <h1 class="text-center">___________</h1><br/><br>
+            <h3 class="text-center">From space to ocean</h3><br>
+            <a href="#ancre" class="link-center">see more</a>
+            <div class="vl"></div>
+        </div>
+        <div id="ancre" class="list">
+            <div class="flexDisposition">
+                <div id="formsDisplay">
+                    <form id="priceForm" onSubmit="javascript:SubmitSort()">
+                        <label class="biggerFont">prix minimum</label>
+                        <input type="number" name="min" step="0.1" id="minValue">
+                        <label class="biggerFont">prix maximum</label>
+                        <input type="number" name="max" step="0.1" id="maxValue">
+                        <button class="btn-primary biggerFont" type="submit">tri par prix</button>
+                    </form>
+                    <br/>
+                    <button class="btn-primary biggerFont" id="sortButton" onClick="javascript:clickSort()">changer l'ordre d'affichage</button>
+                </div>
+                <img id="astronauteVolant" th:src="@{image/astronauteVolant.png}" alt="astronaute volant"/>
+            </div>
+            <br/>
+            <br/>
+
+            <h3 class="typeSuit"> Scaphandres spaciaux:</h3>
+
+            <div class="flexDisposition">
+                <div th:if="${productListSpace.empty}">
+                    <p>Nothing in space for the moment</p>
+                </div>
+                <div th:each="suit : ${productListSpace}">
+                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
+                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                        <button class="btn-primary" type="submit">X</button>
+                    </form>
+                    <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
+                    <p th:text="${suit.getShortDescription()}">NAME</p>
+                    <p th:text="${suit.getPrice()}">NAME</p>
+
+                    <button class="btn-primary">Plus d'informations</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <img id="astronauteDauphin" th:src="@{image/astronauteDauphin.png}" alt="astronaute dauphin"/>
+    <div id="blueZone">
+        <div class="list">
+            <h3 class="typeSuit"> Scaphandres sous-marins:</h3>
+            <div class="flexDisposition">
+                <div th:if="${productListSubmarine.empty}">
+                    <p>Nothing under water for the moment</p>
+                </div>
+                <div th:each="suit : ${productListSubmarine}">
+                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
+                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                        <button class="btn-primary" type="submit">X</button>
+                    </form>
+                    <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
+                    <p th:text="${suit.getShortDescription()}">NAME</p>
+                    <p th:text="${suit.getPrice()}">NAME</p>
+                    <button class="btn-primary">Plus d'informations</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <a th:href="@{/addSuit}"> ajouter un scaphandre</a>
+
+    <script type="text/javascript">
+
+        function clickSort(){
+            let url = new URL(window.location.href)
+            let params = url.searchParams;
+            if(params.get("order") == "ASC" || params.get("order") == null){
+                params.set("order", "DESC")
+                window.location = url.toString()
+                asc = false
+            }else{
+                params.set("order", "ASC")
+                window.location = url.toString()
+                asc = true;
+            }
+        }
+
+         function SubmitSort(){
+            let url = new URL(window.location.href);
+            let params = url.searchParams;
+            let min = $("#minValue").val();
+            let max = $("#maxValue").val();
+            params.set("min", min);
+            params.set("max", max);
+            window.location = url.toString();
+        }
+
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

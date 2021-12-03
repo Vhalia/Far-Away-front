@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<html  html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Identifiez-vous !</title>
+</head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link th:href="@{login.css}" rel="stylesheet">
+<link th:href="@{style.css}" rel="stylesheet">
+<link th:href="@{font/ProductSansRegular.ttf}">
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img th:src="@{/images/logo-water.png}" alt="logo far away" width="60" height="50"/>
+        </div>
+        <div>
+            <ul class="nav justify-content-center">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Accueil</a> <!--TODO call front home (ajouter tf)-->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/users}">Test</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container d-flex" id="forms">
+            <div class="container" id="login">
+                <form method="post" th:action="@{/authentication/login}" th:object="${user}" class="d-flex flex-column align-items-center" id="login-form">
+                    <h1 class="m-5">CONNECTEZ-VOUS</h1>
+                    <div class="form-group">
+                        <input id="login-email" th:field="*{mail}" type="text" placeholder="Email" value="" required/>
+                    </div>
+                    <div class="login-form">
+                        <input id="login-password" th:field="*{password}" type="password" placeholder="Mot de passe" value="" required>
+                    </div>
+                    <button id="login-submit" class="btn btn-primary m-5" type="submit">Se connecter</button>
+                </form>
+            </div>
+            <div class="container" id="register">
+                <form method="post" th:action="@{/authentication/register}" th:object="${user}" class="d-flex flex-column align-items-center" id="register-form">
+                    <h1 class="m-5">INSCRIVEZ-VOUS</h1>
+                    <div class="form-group">
+                        <input id="register-name" th:field="*{surname}" type="text" placeholder="Nom" value="" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="register-surname" th:field="*{firstName}" type="text" placeholder="Prénom" value="" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="register-address" th:field="*{address}" type="text" placeholder="Adresse" value="" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="register-pseudo" th:field="*{nickname}" type="text" placeholder="Pseudo" value="" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="register-email" th:field="*{mail}" type="text" placeholder="Email" value="" required/>
+                    </div>
+                    <div class="login-form">
+                        <input id="register-password" th:field="*{password}" type="password" placeholder="Mot de passe" value="" required>
+                    </div>
+                    <div class="login-form mt-3">
+                        <input id="register-confirm-password" th:field="*{confirmPassword}" type="password" placeholder="Confirmer le mot de passe" value="" required>
+                    </div>
+                    <button class="btn btn-primary m-5" type="submit">S'enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="pt-5 footer">
+        <div class="row align-items-center">
+            <div class="col-12 d-flex justify-content-center mb-5">
+                <img th:src="@{/images/logo-space.png}" alt="logo far away" width="60" height="50"/>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
