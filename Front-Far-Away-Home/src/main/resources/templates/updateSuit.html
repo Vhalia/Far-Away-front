@@ -21,11 +21,18 @@
     <div>
         <ul class="nav justify-content-center">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" th:href="@{/}">Accueil</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Produits</a> <!--TODO call front products (ajouter tf)-->
-            </li>
+            <div th:if="${connected}">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/basket}">Panier</a>
+                </li>
+            </div>
+            <div th:if="${!connected}">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/authentification}">Connexion</a>
+                </li>
+            </div>
         </ul>
     </div>
 </nav>

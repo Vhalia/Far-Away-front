@@ -59,4 +59,9 @@ public class AuthenticationController {
         model.addAttribute("user", userLogged);
         return new ModelAndView(new RedirectView("http://localhost:8002/"));
     }
+
+    @GetMapping("/home")
+    public ModelAndView toBasketPage(Model model){
+        return new ModelAndView(new RedirectView("http://localhost:8002"));
+    }
 }

@@ -23,9 +23,16 @@
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/}">Accueil</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{}">Panier</a> <!--TODO call front basket (ajouter tf)-->
-                    </li>
+                    <div th:if="${connected}">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/basket}">Panier</a>
+                        </li>
+                    </div>
+                    <div th:if="${!connected}">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/authentification}">Connexion</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>
@@ -53,7 +60,9 @@
             </div>
             <br/>
             <br/>
-
+            <a th:href="@{/addSuit}"> <button class="btn-primary">ajouter un scaphandre </button></a>
+            <br/>
+            <br/>
             <h3 class="typeSuit"> Scaphandres spaciaux:</h3>
 
             <div class="flexDisposition">
@@ -97,7 +106,6 @@
         </div>
         
     </div>
-    <a th:href="@{/addSuit}"> ajouter un scaphandre</a>
 
     <script type="text/javascript">
 
