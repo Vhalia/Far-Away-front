@@ -13,4 +13,5 @@ public class Comment {
     private Boolean isDeleted;
     private int idUser;
     private int idProduct;
+    private User author;
 }
