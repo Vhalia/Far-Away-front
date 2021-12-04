@@ -3,7 +3,48 @@
     --yellow : #FFEB72;
 }
 
-#login-form, #register-form {
-    background-color: rgba(255,255,255,0.05);
+#login-form,
+#register-form {
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
+    min-width: 400px;
+    max-width: 0;
+    height: fit-content;
+}
+
+#login-form h1,
+#register-form h1 {
+    font-size: 1.5rem;
+}
+
+#forms {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container {
+    max-width: none;
+}
+
+form input {
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+#log footer {
+    margin-top: 5% !important;
+}
+
+#log main {
+    min-height: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+
+#log .nav.justify-content-center {
+    align-items: center;
 }

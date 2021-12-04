@@ -1,0 +1,13 @@
+#main-update-comment {
+    min-height: 45vh;
+}
+
+#update-comment {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    height: fit-content;
+}
+
+#input-rating {
+    width: 4%;
+}

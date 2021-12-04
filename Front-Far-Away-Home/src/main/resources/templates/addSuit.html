@@ -10,13 +10,13 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous">
 <link th:href="@{style.css}" rel="stylesheet">
-<link th:href="@{home.css}" rel="stylesheet">
+<link th:href="@{formSuit.css}" rel="stylesheet">
 <link th:href="@{font/ProductSansRegular.ttf}">
 
-<body>
+<body id="add">
     <nav class="navbar">
         <div class="navbar-brand">
-            <img th:src="@{image/logo-space.png}" alt="logo far away" width="60" height="50"/>
+            <img th:src="@{image/logo-water.png}" alt="logo far away" width="60" height="50"/>
         </div>
         <div>
             <ul class="nav justify-content-center">
@@ -36,25 +36,48 @@
             </ul>
         </div>
     </nav>
-    <div id="addBorder">
-        <div>
-            <p class="addSuitTitle"> Ajouter un scaphandre en ligne: </p>
 
-            <form action="#" id="addingForm" th:action="@{/suits}" th:object="${suit}" method="post">
-                <p><input class ="inputAdd" type="text" style="" placeholder="nom du produit" th:field="*{name}"></p>
-                <p><input class ="inputAdd" type="number" step="0.01" style="" placeholder="prix" th:field="*{price}"></p>
-                <label for="cat-select">Catégorie:</label>
-                <select th:field="*{category}" name="categories" id="cat-select">
-                    <option th:value="'sous-marin'" th:text="Sous-marin"></option>
-                    <option th:value="'espace'" th:text="Espace"></option>
-                </select>
-                <p><input class ="inputAdd" type="text" style="" placeholder="courte description" th:field="*{shortDescription}"></p>
-                <p><input class ="inputAdd" type="text" style="" placeholder="description détaillée" th:field="*{detailedDescription}"></p>
-                <button class="btn-primary" type="submit">confirmer l'ajout</button>
+    <main>
+        <div class="container" id="forms">
+            <form action="#" id="addingForm" th:action="@{/suits}" th:object="${suit}" method="post" class="d-flex flex-column align-items-left add-form">
+                <h1>Ajouter un scaphandre:</h1>
+                <div class="form-group d-flex flex-column align-items-left">
+                    <label for="titre">Titre:</label>
+                    <input id="titre" class ="inputAdd" type="text" style="" placeholder="Titre" th:field="*{name}">
+                </div>
+                <div class="form-group d-flex flex-column align-items-left">
+                    <label for="courteDescription">Courte description:</label>
+                    <input id="courteDescription" class="inputAdd" type="text" th:field="*{shortDescription}" required>
+                </div>
+                <div class="form-group d-flex flex-column align-items-left">
+                    <label for="textareaDescription-name">Description détaillée:</label>
+                    <textarea id="textareaDescription-name" class ="inputAdd" placeholder="Description détaillée" type="text" th:field="*{detailedDescription}"></textarea>
+                </div>
+                <div class="form-group d-flex flex-column align-items-left">
+                    <label for="selectCat">Catégorie:</label>
+                    <div class="form-group d-flex align-items-left">
+                        <select th:field="*{category}" name="categories" id="selectCat">
+                            <option th:value="'sous-marin'" th:text="Sous-marin"></option>
+                            <option th:value="'espace'" th:text="Espace"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group d-flex flex-column align-items-left">
+                    <label for="register-name">Prix:</label>
+                    <input id="register-name" class ="inputAdd" type="number" step="0.01" th:field="*{price}" required>
+                </div>
+                <button class="btn btn-primary m-5" type="submit">Ajouter le scaphandre</button>
             </form>
         </div>
-        <img id="astronauteDauphinAdd" th:src="@{image/astronauteDauphin.png}" alt="astronaute dauphin"/>
-    </div>
+    </main>
+
+    <footer class="pt-5">
+        <div class="row align-items-center">
+            <div class="col-12 d-flex justify-content-center mb-5">
+                <img th:src="@{image/logo-space.png}" alt="logo far away" width="60" height="50" />
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

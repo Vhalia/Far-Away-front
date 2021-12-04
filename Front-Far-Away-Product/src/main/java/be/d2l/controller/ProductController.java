@@ -41,13 +41,14 @@ public class ProductController {
         model.addAttribute("product", product);
 
         //Average product rating
-        String averageRating;
+        double averageRating = proxy.averageRatingOfComment(productId, token);
+        String averageRatingToDisplay = null;
         if(proxy.averageRatingOfComment(productId, token) != -1) {
-            averageRating = proxy.averageRatingOfComment(productId, token) + "/5";
+            averageRatingToDisplay = String.format("%.1f", averageRating) + "/5";
         } else {
-            averageRating = "Ce produit n'as pas encore été évalué";
+            averageRatingToDisplay = "Ce produit n'as pas encore été évalué";
         }
-        model.addAttribute("averageRating", averageRating);
+        model.addAttribute("averageRating", averageRatingToDisplay);
 
         //Ratings & comments of the active user
         Iterable<Comment> currentUserComments = proxy.getCommentsByIdProductAndIdUser(productId, userId, token);
