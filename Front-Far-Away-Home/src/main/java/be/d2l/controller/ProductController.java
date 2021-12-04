@@ -66,4 +66,9 @@ public class ProductController {
     public ModelAndView toAuthentificationPage(Model model){
         return new ModelAndView(new RedirectView("http://localhost:8001/"));
     }
+
+    @GetMapping("/product/{idProduct}")
+    public ModelAndView toProductPage(Model model, @PathVariable("idProduct") int idProduct){
+        return new ModelAndView(new RedirectView("http://localhost:8004/" + idProduct));
+    }
 }

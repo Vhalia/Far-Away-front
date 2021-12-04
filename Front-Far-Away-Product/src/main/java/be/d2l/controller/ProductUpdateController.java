@@ -4,6 +4,7 @@ import be.d2l.proxy.ProductProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class ProductUpdateController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView updateProduct(@PathVariable("id") int productId, Model model){
+    public ModelAndView updateProduct(@PathVariable("id") int productId, Model model, @CookieValue(value = "token", defaultValue = "none") String token){
         return new ModelAndView(new RedirectView("http://localhost:8002/update/" + productId));
     }
 }

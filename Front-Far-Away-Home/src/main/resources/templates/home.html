@@ -77,8 +77,12 @@
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
-
-                    <button class="btn-primary">Plus d'informations</button>
+                    <div th:if="${connected}">
+                        <a th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn-primary" >Plus d'informations</button></a>
+                    </div>
+                    <div th:if="${!connected}">
+                        <a th:href="@{/authentification}"><button class="btn-primary" >Plus d'informations</button></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +104,12 @@
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
-                    <button class="btn-primary">Plus d'informations</button>
+                    <div th:if="${connected}">
+                        <a th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn-primary" >Plus d'informations</button></a>
+                    </div>
+                    <div th:if="${!connected}">
+                        <a th:href="@{/authentification}"><button class="btn-primary" >Plus d'informations</button></a>
+                    </div>
                 </div>
             </div>
         </div>
