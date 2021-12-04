@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class ProductController {
@@ -43,14 +46,23 @@ public class ProductController {
 
         //Ratings & comments of the active user
         Iterable<Comment> currentUserComments = proxy.getCommentsByIdProductAndIdUser(productId, userId);
-        model.addAttribute("currentUserComments", currentUserComments);
+        List<Comment> currentUserCommentsToDisplay = new ArrayList<Comment>();
+        for (Comment comment: currentUserComments) {
+            if(!comment.getIsDeleted())
+                currentUserCommentsToDisplay.add(comment);
+        }
+        model.addAttribute("currentUserComments", currentUserCommentsToDisplay);
 
         //Ratings & comments of other users
         Iterable<Comment> otherUsersComments = proxy.getCommentsByIdProductExceptUser(productId, userId);
+        List<Comment> otherUsersCommentsToDisplay = new ArrayList<Comment>();
         for (Comment comment: otherUsersComments) {
-            comment.setAuthor(proxy.getUserById(comment.getIdUser()));
+            if(!comment.getIsDeleted()){
+                comment.setAuthor(proxy.getUserById(comment.getIdUser()));
+                otherUsersCommentsToDisplay.add(comment);
+            }
         }
-        model.addAttribute("otherUsersComments", otherUsersComments);
+        model.addAttribute("otherUsersComments", otherUsersCommentsToDisplay);
 
         return "product";
     }
@@ -63,7 +75,9 @@ public class ProductController {
 
     @PostMapping("delete/comment/{productId}/{commentId}")
     public ModelAndView deleteComment(@PathVariable("productId") int productId,@PathVariable("commentId") int commentId, Model model){
-        proxy.deleteComment(commentId);
+        Comment deletedComment = proxy.getCommentById(commentId);
+        deletedComment.setIsDeleted(true);
+        proxy.updateComment(commentId, deletedComment);
         return new ModelAndView("redirect:/" + productId);
     }
 

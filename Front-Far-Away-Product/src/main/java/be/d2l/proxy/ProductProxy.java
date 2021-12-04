@@ -37,8 +37,8 @@ public interface ProductProxy {
     @DeleteMapping("/suits/{id}")
     void deleteProduct(@PathVariable("id") int id);
 
-    @DeleteMapping("/comments/{idComment}")
-    void deleteComment(@PathVariable("idComment") int idComment);
+    @PutMapping("/comments/{idComment}")
+    Comment updateComment(@PathVariable("idComment") int idComment, @RequestBody Comment updateComment);
 
     @PostMapping("/comments")
     Comment addComment(@RequestBody Comment newComment);
@@ -48,8 +48,5 @@ public interface ProductProxy {
 
     @GetMapping("/comments/commentbyid/{idComment}")
     Comment getCommentById(@PathVariable("idComment") int idComment);
-
-    @PutMapping("/comments/{idComment}")
-    void updateComment(@PathVariable("idComment") int idComment, @RequestBody Comment updateComment);
 
 }
