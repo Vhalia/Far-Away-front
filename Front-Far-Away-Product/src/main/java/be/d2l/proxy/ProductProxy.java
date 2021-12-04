@@ -5,6 +5,7 @@ import be.d2l.model.Comment;
 import be.d2l.model.Product;
 import be.d2l.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,5 +45,11 @@ public interface ProductProxy {
 
     @PostMapping("/baskets")
     Basket addProductToBasket(@RequestBody Basket newBasket);
+
+    @GetMapping("/comments/commentbyid/{idComment}")
+    Comment getCommentById(@PathVariable("idComment") int idComment);
+
+    @PutMapping("/comments/{idComment}")
+    void updateComment(@PathVariable("idComment") int idComment, @RequestBody Comment updateComment);
 
 }

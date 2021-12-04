@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/")
@@ -57,7 +58,7 @@ public class ProductController {
     @PostMapping("delete/product/{id}")
     public ModelAndView deleteSuit(@PathVariable("id") int id, Model model){
         proxy.deleteProduct(id);
-        return new ModelAndView("redirect:/1");//TODO redirect to homepage
+        return new ModelAndView(new RedirectView("http://localhost:8002/"));
     }
 
     @PostMapping("delete/comment/{productId}/{commentId}")
@@ -78,7 +79,6 @@ public class ProductController {
     public ModelAndView addToBasket(@PathVariable("productId") int productId, Basket basket, Model model){
         basket.setIdUser(2);//TODO set this with token value
         basket.setIdProduct(productId);
-        System.out.println(basket.toString());//TODO remove this
         proxy.addProductToBasket(basket);
         return new ModelAndView("redirect:/" + productId);
     }

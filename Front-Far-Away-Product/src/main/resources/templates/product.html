@@ -11,7 +11,7 @@
       crossorigin="anonymous">
 <link th:href="@{/style/product.css}" rel="stylesheet">
 <link th:href="@{/style/style.css}" rel="stylesheet">
-<link th:href="@{font/ProductSansRegular.ttf}">
+<link th:href="@{/font/ProductSansRegular.ttf}">
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
@@ -45,7 +45,9 @@
                 </ul>
             </div>
             <div id="product-buttons" >
-                <button type="button" class="btn btn-secondary">Modifier le produit</button>
+                <form method="GET" th:action="@{/update/product/{productId}(productId = ${product.getId()})}">
+                    <button type="submit" class="btn btn-secondary">Modifier le produit</button>
+                </form>
                 <form method="POST" th:action="@{delete/product/{productId}(productId = ${product.getId()})}">
                     <button type="submit" class="btn btn-danger">Supprimer le produit</button>
                 </form>
@@ -70,7 +72,9 @@
                         <b>Commentaire : </b>
                         <p th:text="${comment.getText()}"></p>
                         <div id="my-old-comments-buttons">
-                            <button type="button" class="btn btn-secondary">Modifier le commentaire</button>
+                            <form method="GET" th:action="@{update/comment/{commentId}(commentId = ${comment.getId()})}">
+                                <button type="submit" class="btn btn-secondary">Modifier le commentaire</button>
+                            </form>
                             <form method="POST" th:action="@{delete/comment/{productId}/{commentId}(productId = ${comment.getIdProduct()},commentId = ${comment.getId()})}">
                                 <button type="submit" class="btn btn-danger">Supprimer le commentaire</button>
                             </form>
