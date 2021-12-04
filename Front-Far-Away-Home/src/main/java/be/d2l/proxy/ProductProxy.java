@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @Component
-@FeignClient(name = "far-away-gateway", url = "localhost:9007")
+@FeignClient(name = "far-away-gateway")
 public interface ProductProxy {
 
     @GetMapping("/suits")
