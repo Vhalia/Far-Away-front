@@ -13,6 +13,16 @@ nav {
 
 #presentation {
     padding : 10%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#seemore-div {
+    position: absolute;
+    bottom: 0;
+    right: 48%;
 }
 
 #title {
@@ -21,26 +31,27 @@ nav {
 
 .vl {
     border-left: 3px solid white;
-    height: 500px;
+    height: 150px;
     margin-left: 50%;
 }
 
 .typeSuit {
     text-decoration: underline;
-    margin-bottom: 10%;
+    margin-bottom: 4%;
 }
 
-.list {
-    padding : 100px;
+.list-space {
+    padding: 0px 100px 100px 100px;
 }
 
-.link-center{
-    margin-left: 47.5%;
+.list-water {
+    padding: 0px 100px 100px 100px;
+    margin-top: 7%;
 }
 
 .flexDisposition{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -49,18 +60,25 @@ nav {
 }
 
 .biggerFont{
-    font-size: 120%;
+    font-size: 1em;
 }
 
 #astronauteDauphin{
     z-index: 1;
-    width: 15%;
-    margin-top: -12%;
+    width: 150px;
+    position: absolute;
+    left: 80%;
+    bottom: -107%;
+    transform: scaleX(-1);
 }
 
 #astronauteVolant{
     z-index: 1;
-    width: 15%;
+    width: 150px;
+    rotate: -15deg;
+    position: absolute;
+    right: 5%;
+    bottom: -25%;
 }
 
 #formsDisplay{
@@ -71,32 +89,34 @@ nav {
     font-size: 110%;
 }
 
-/*add suit page*/
-
-.addSuitTitle{
-    font-size: 170%;
+#title-underline {
+    border: 1px white solid;
+    width: 10%;
 }
 
-#addingForm{
-
+#add-button-li {
+    display: flex;
+    align-items: center;
 }
 
-.inputAdd{
-    width: 70%;
+#add-button {
+    font-size: 0.75em;
 }
 
-#addBorder{
-    margin-left: 3%;
-    margin-right: 7%;
-    margin-top: 8%;
-    padding: 5%;
-    border-radius: 10px;
-    border : solid white 2px;
-}
-
-#astronauteDauphinAdd{
-    z-index: 1;
+.input-order-price{
     width: 15%;
-    margin-top: -12%;
-    margin-left: 75%;
+    padding-left: 10px;
+}
+
+#sortButton {
+    height: fit-content;
+}
+
+#ancre {
+    padding-top: 40px;
+}
+
+#back-separation{
+    rotate : 180deg;
+    margin: -5px 0;
 }

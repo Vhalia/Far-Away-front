@@ -15,11 +15,14 @@
 <body>
     <div id="darkZone">
         <nav class="navbar">
-            <div class="navbar-brand">
+            <div class="navbar-brand ml-1">
                 <img th:src="@{image/logo-space.png}" alt="logo far away" width="60" height="50"/>
             </div>
             <div>
                 <ul class="nav justify-content-center">
+                    <li class="nav-item active" id="add-button-li">
+                        <a class="nav-link" th:href="@{/addSuit}">Ajouter un scaphandre</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/}">Accueil</a>
                     </li>
@@ -38,29 +41,28 @@
         </nav>
         <div id="presentation">
             <h1 class="text-center" id="title">FAR AWAY</h1>
-            <h1 class="text-center">___________</h1><br/><br>
+            <hr id="title-underline"/>
             <h3 class="text-center">From space to ocean</h3><br>
-            <a href="#ancre" class="link-center">see more</a>
-            <div class="vl"></div>
+            <div class="text-center" id="seemore-div">
+                <a href="#ancre" class="link-center">see more</a>
+                <div class="vl"></div>
+            </div>
         </div>
-        <div id="ancre" class="list">
-            <div class="flexDisposition">
-                <div id="formsDisplay">
-                    <form id="priceForm" onSubmit="javascript:SubmitSort()">
-                        <label class="biggerFont">prix minimum</label>
-                        <input type="number" name="min" step="0.1" id="minValue">
-                        <label class="biggerFont">prix maximum</label>
-                        <input type="number" name="max" step="0.1" id="maxValue">
-                        <button class="btn-primary biggerFont" type="submit">tri par prix</button>
-                    </form>
-                    <br/>
-                    <button class="btn-primary biggerFont" id="sortButton" onClick="javascript:clickSort()">changer l'ordre d'affichage</button>
-                </div>
+        <div id="ancre"></div>
+        <div class="mt-5">
+            <div class="d-flex justify-start flex-wrap">
+                <button class="btn-primary biggerFont mr-5 ml-5" id="sortButton" onClick="javascript:clickSort()">changer l'ordre d'affichage</button>
+                <form id="priceForm" onSubmit="javascript:SubmitSort()">
+                    <input class="input-order-price" placeholder="MIN" type="number" name="min" step="0.1" id="minValue">
+                    <input class="input-order-price" placeholder="MAX" type="number" name="max" step="0.1" id="maxValue">
+                    <button class="btn-primary biggerFont" type="submit">Trier</button>
+                </form>
                 <img id="astronauteVolant" th:src="@{image/astronauteVolant.png}" alt="astronaute volant"/>
             </div>
+        </div>
+        <div class="list-space">
             <br/>
             <br/>
-            <a th:href="@{/addSuit}"> <button class="btn-primary">ajouter un scaphandre </button></a>
             <br/>
             <br/>
             <h3 class="typeSuit"> Scaphandres spaciaux:</h3>
@@ -69,7 +71,7 @@
                 <div th:if="${productListSpace.empty}">
                     <p>Nothing in space for the moment</p>
                 </div>
-                <div th:each="suit : ${productListSpace}">
+                <div class="p-2" th:each="suit : ${productListSpace}">
                     <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
                     <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
                         <button class="btn-primary" type="submit">X</button>
@@ -85,8 +87,11 @@
 
     </div>
     <img id="astronauteDauphin" th:src="@{image/astronauteDauphin.png}" alt="astronaute dauphin"/>
+    <svg id="back-separation" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40" class="position-absolute width-full z-1">
+        <path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#000116"></path>
+    </svg>
     <div id="blueZone">
-        <div class="list">
+        <div class="list-water">
             <h3 class="typeSuit"> Scaphandres sous-marins:</h3>
             <div class="flexDisposition">
                 <div th:if="${productListSubmarine.empty}">
@@ -106,6 +111,13 @@
         </div>
         
     </div>
+    <footer class="pt-5">
+        <div class="row align-items-center">
+            <div class="col-12 d-flex justify-content-center mb-5">
+                <img th:src="@{../image/logo-space.png}" alt="logo far away" width="60" height="50" />
+            </div>
+        </div>
+    </footer>
 
     <script type="text/javascript">
 

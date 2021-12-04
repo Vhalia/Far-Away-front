@@ -1,0 +1,77 @@
+textarea {
+    border-radius: 15px;
+    padding: 3px 8px;
+    min-height: 120px;
+    background-color: transparent;
+    color: white;
+}
+
+#modif #modif-form {
+    padding: 0 25px;
+}
+#add #modif-form {
+    padding: 0 25px;
+}
+
+#update-suit-form, #addingForm {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    min-width: 400px;
+    max-width: 0;
+    height: fit-content;
+}
+
+#update-suit-form h1, #addingForm h1{
+    font-size: 1.5rem;
+}
+
+#forms {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#checkboxEspace,
+#checkboxOcean {
+    width: .8em;
+    height: .8em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+
+}
+
+#checkboxEspace:checked,
+#checkboxOcean:checked {
+    background-color: var(--water-bg);
+}
+
+.catCheck {
+    margin: 0 20px;
+}
+
+#categorie,
+#categorie label {
+    margin: 0;
+}
+
+.modif-form, .add-form {
+    padding: 0 50px !important;
+    min-width: 550px!important
+}
+
+.modif-form h1, .add-form h1 {
+    padding: 40px 0 20px 0;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+form input {
+    padding: 3px 8px;
+    border-radius: 20px;
+}

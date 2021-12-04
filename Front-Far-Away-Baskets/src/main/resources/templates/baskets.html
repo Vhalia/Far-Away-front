@@ -30,50 +30,58 @@
 
     </div>
 </nav>
+<main id="main-basket">
+    <div class="container" id="basket">
+        <h3 class="d-flex text-left" id="titre">VOTRE PANIER</h3>
 
-<div class="container" id="basket">
-    <h3 class="d-flex text-left" id="titre">VOTRE PANIER</h3>
+        <div id="products">
+            <div th:if="${baskets.empty}">
+                <div class="d-flex justify-content-around align-items-center m-5">
+                    <p id="text-missing-product">Il n'y a rien dans votre panier</p>
+                    <img th:src="@{images/wandering-astro.png}" alt="wandering astro image"/>
 
-    <div id="products">
-        <div th:each="basket: ${baskets}" class="product">
-            <div class="text-product">
-                <u>
+                </div>
+
+            </div>
+            <div th:each="basket: ${baskets}" class="product">
+                <div class="text-product">
+                    <u>
+                        <b>
+                            <p th:text="${basket.getProduct().getName()}">product name</p>
+                        </b>
+                    </u>
+                    <p th:text="${basket.getProduct().getShortDescription()}">product description</p>
                     <b>
-                        <p th:text="${basket.getProduct().getName()}">product name</p>
+                        <p th:text="${basket.getProduct().getPrice() + ' €'}">product price</p>
                     </b>
-                </u>
-                <p th:text="${basket.getProduct().getShortDescription()}">product description</p>
-                <b>
-                    <p th:text="${basket.getProduct().getPrice() + ' €'}">product price</p>
-                </b>
+                </div>
+                <div class="button-product flex-fill">
+                    <form method="POST" th:action="@{delete/baskets/{idProduct}/{idUser}(idProduct=${basket.getIdProduct()}, idUser=${idUser})}">
+                        <button class="btn-primary" type="submit" >Supprimer</button>
+                    </form>
+                    <br>
+                        <input th:attr="data-idprod=${basket.getIdProduct()}, data-iduser=${idUser}"
+                               class="quantity" th:value="${basket.getQuantity()}" >
+                </div>
+
             </div>
-            <div class="button-product flex-fill">
-                <form method="POST" th:action="@{delete/baskets/{idProduct}/{idUser}(idProduct=${basket.getIdProduct()}, idUser=${idUser})}">
-                    <button class="btn-primary" type="submit" >Supprimer</button>
-                </form>
-                <br>
-                    <input th:attr="data-idprod=${basket.getIdProduct()}, data-iduser=${idUser}"
-                           class="quantity" th:value="${basket.getQuantity()}" >
+            <div th:if="${!baskets.empty}">
+                <div class="prix">
+                    <p th:text="${'Sous-total (' + numberProduct + ' produit(s)) : ' + sumPrice + ' €'}"/>
+                </div>
+                <div class="prix-button">
+                    <form method="POST" th:action="@{pay/baskets/{idUser}(idUser=${idUser})}">
+                        <button class="btn-primary" type="submit">Passer la commande</button>
+                    </form>
+                </div>
             </div>
-
         </div>
-
-        <div class="prix">
-            <p th:text="${'Sous-total (' + numberProduct + ' produit(s)) : ' + sumPrice + ' €'}"/>
-        </div>
-        <div class="prix-button">
-            <form method="POST" th:action="@{pay/baskets/{idUser}(idUser=${idUser})}">
-                <button class="btn-primary" type="submit">Passer la commande</button>
-            </form>
-        </div>
-
     </div>
-</div>
-
+</main>
 <footer class="pt-5 footer">
     <div class="row align-items-center">
         <div class="col-12 d-flex justify-content-center mb-5">
-            <img th:src="@{images/logo-space.png}" alt="logo far away" width="60" height="50"/>
+            <img th:src="@{images/logo-space.png}" alt="logo far away" width="60" height="50" />
         </div>
     </div>
 </footer>

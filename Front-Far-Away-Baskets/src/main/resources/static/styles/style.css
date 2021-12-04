@@ -62,4 +62,7 @@ footer {
     height: 100%;
     font-size: .75em;
 }
+.row {
+    margin: 0;
+}
 

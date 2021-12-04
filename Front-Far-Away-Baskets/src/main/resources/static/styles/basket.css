@@ -44,3 +44,10 @@
 button{
     width: 20%;
 }
+#main-basket {
+    min-height: 50vh;
+}
+
+#text-missing-product {
+    font-size: 3em;
+}
