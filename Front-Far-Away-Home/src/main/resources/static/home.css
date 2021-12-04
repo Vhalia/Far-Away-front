@@ -51,7 +51,7 @@ nav {
 
 .flexDisposition{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -68,7 +68,7 @@ nav {
     width: 150px;
     position: absolute;
     left: 80%;
-    bottom: -107%;
+    bottom: -87%;
     transform: scaleX(-1);
 }
 

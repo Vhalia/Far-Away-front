@@ -4,8 +4,8 @@
     --not-realy-black: #000116;
     --dark-blue: #121326;
     --light-dark-blue: #23254a;
-    --red : #DC3545;
-    --light-blue : #0d6efd;
+    --red : #df4302;
+    --light-orange : #fc8b0a;
 }
 
 body {
@@ -67,14 +67,14 @@ a:hover, .nav a:hover {
 .btn-secondary {
     color: black;
     border-radius: 20px;
-    border-color: var(--light-blue);
-    background-color: var(--light-blue);
+    border-color: var(--light-orange);
+    background-color: var(--light-orange);
 }
 
 .btn-secondary:hover{
-    color: var(--light-blue);
+    color: var(--light-orange);
     background-color: transparent;
-    border-color: var(--light-blue);
+    border-color: var(--light-orange);
 }
 
 input {
@@ -90,4 +90,7 @@ footer {
     width: 100%;
     height: 100%;
     font-size: .75em;
+}
+.row {
+    margin: 0;
 }

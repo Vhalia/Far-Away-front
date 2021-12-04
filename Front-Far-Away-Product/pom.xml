@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>be.2d2l</groupId>
-	<artifactId>Front-Far-Away-Login</artifactId>
+	<artifactId>Front-Far-Away-Product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Front-Far-Away-Login</name>
-	<description>front login for far away</description>
+	<name>Front-Far-Away-Product</name>
+	<description>front product for far away</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0-RC1</spring-cloud.version>

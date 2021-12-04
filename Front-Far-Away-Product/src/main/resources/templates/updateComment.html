@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar">
     <div class="navbar-brand">
-        <img th:src="@{images/logo-space.png}" alt="logo far away" width="60" height="50"/>
+        <img th:src="@{/images/logo-space.png}" alt="logo far away" width="60" height="50"/>
     </div>
     <div>
         <ul class="nav justify-content-center">
@@ -30,19 +30,23 @@
 
     </div>
 </nav>
-    <main>
-        <div class="container">
-            <h2>Modifier ce commentaire: </h2>
-            <form id="add-comment" method="POST"
-                  th:action="@{/update/comment/{productId}/{commentId}(productId = ${comment.getIdProduct()}, commentId=${comment.getId()})}" th:object="${comment}">
-                <input type="text" name="updated-comment" th:value="${comment.getText()}" th:field="*{text}" required><br>
-                <label for="evaluation">Evaluation du produit (entre 1 and 5) :</label>
-                <input type="number" id="evaluation" name="evaluation" min="1" max="5" th:value="${comment.getRating()}" th:field="*{rating}" required><br>
-                <input type="submit" class="btn btn-secondary" value="Modifier">
-            </form>
+<main id="main-update-comment">
+    <div id="update-comment" class="container p-5">
+        <h2>Modifier ce commentaire: </h2>
+        <form id="add-comment" method="POST"
+              th:action="@{/update/comment/{productId}/{commentId}(productId = ${comment.getIdProduct()}, commentId=${comment.getId()})}" th:object="${comment}">
+            <input type="text" name="updated-comment" th:value="${comment.getText()}" th:field="*{text}" required><br>
+            <input type="submit" class="btn btn-secondary mt-2" value="Modifier">
+        </form>
+    </div>
+</main>
+<footer class="pt-5">
+    <div class="row align-items-center">
+        <div class="col-12 d-flex justify-content-center mb-5">
+            <img th:src="@{/images/logo-space.png}" alt="logo far away" width="60" height="50" />
         </div>
-    </main>
-
+    </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

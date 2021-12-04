@@ -17,7 +17,7 @@ public interface ProductProxy {
     Product getProduct(@PathVariable("id") int id, @RequestHeader(name = "Authorization", required = false) String token);
 
     @GetMapping("/comments/average/{idProduct}")
-    int averageRatingOfComment(@PathVariable("idProduct") int idProduct, @RequestHeader(name = "Authorization", required = false) String token);
+    double averageRatingOfComment(@PathVariable("idProduct") int idProduct, @RequestHeader(name = "Authorization", required = false) String token);
 
     @GetMapping("/users/{mail}")
     User getUserByMail(@PathVariable("mail") String mail, @RequestHeader(name = "Authorization", required = false) String token);

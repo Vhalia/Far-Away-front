@@ -2,6 +2,8 @@
     --water-bg : #013A63;
     --yellow : #FFEB72;
     --dark-blue : #000116;
+    --red : #df4302;
+    --light-orange : #fc8b0a;
 }
 
 body {
@@ -63,5 +65,31 @@ footer {
 }
 .row {
     margin: 0;
+}
+
+.btn-danger {
+    color: black;
+    border-radius: 20px;
+    border-color: var(--red);
+    background-color: var(--red);
+}
+
+.btn-danger:hover{
+    color: var(--red);
+    background-color: transparent;
+    border-color: var(--red);
+}
+
+.btn-secondary {
+    color: black;
+    border-radius: 20px;
+    border-color: var(--light-orange);
+    background-color: var(--light-orange);
+}
+
+.btn-secondary:hover{
+    color: var(--light-orange);
+    background-color: transparent;
+    border-color: var(--light-orange);
 }
 

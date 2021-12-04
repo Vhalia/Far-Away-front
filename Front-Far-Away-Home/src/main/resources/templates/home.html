@@ -20,9 +20,11 @@
             </div>
             <div>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item active" id="add-button-li">
-                        <a class="nav-link" th:href="@{/addSuit}">Ajouter un scaphandre</a>
-                    </li>
+                    <div th:if="${connected}">
+                        <li class="nav-item active" id="add-button-li">
+                            <a class="nav-link" th:href="@{/addSuit}">Ajouter un scaphandre</a>
+                        </li>
+                    </div>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/}">Accueil</a>
                     </li>
@@ -72,18 +74,18 @@
                     <p>Nothing in space for the moment</p>
                 </div>
                 <div class="p-2" th:each="suit : ${productListSpace}">
-                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
-                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
-                        <button class="btn-primary" type="submit">X</button>
-                    </form>
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
-                    <div th:if="${connected}">
-                        <a th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn-primary" >Plus d'informations</button></a>
+                    <div th:if="${connected}" class="d-flex flex-row">
+                        <a class="mr-1" th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn btn-primary">Voir plus</button></a>
+                        <a class="mr-1" th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn btn-secondary">Modifier</button></a>
+                        <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                        </form>
                     </div>
                     <div th:if="${!connected}">
-                        <a th:href="@{/authentification}"><button class="btn-primary" >Plus d'informations</button></a>
+                        <a th:href="@{/authentification}"><button class="btn btn-primary" >Voir plus</button></a>
                     </div>
                 </div>
             </div>
@@ -102,18 +104,18 @@
                     <p>Nothing under water for the moment</p>
                 </div>
                 <div th:each="suit : ${productListSubmarine}">
-                    <a th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn-primary">modifier</button></a>
-                    <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
-                        <button class="btn-primary" type="submit">X</button>
-                    </form>
                     <strong class="biggerFont" th:text="${suit.getName()}">NAME</strong>
                     <p th:text="${suit.getShortDescription()}">NAME</p>
                     <p th:text="${suit.getPrice()}">NAME</p>
-                    <div th:if="${connected}">
-                        <a th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn-primary" >Plus d'informations</button></a>
+                    <div th:if="${connected}" class="d-flex flex-row">
+                        <a class="mr-1" th:href="@{/product/{idProduct}(idProduct = ${suit.getId()})}"><button class="btn btn-primary" >Voir plus</button></a>
+                        <a class="mr-1" th:href="@{/update/{id}(id=${suit.getId()})}"><button class="btn btn-secondary">Modifier</button></a>
+                        <form method="POST" th:action="@{delete/suits/{id}(id=${suit.getId()})}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                        </form>
                     </div>
                     <div th:if="${!connected}">
-                        <a th:href="@{/authentification}"><button class="btn-primary" >Plus d'informations</button></a>
+                        <a th:href="@{/authentification}"><button class="btn btn-primary" >Voir plus</button></a>
                     </div>
                 </div>
             </div>
