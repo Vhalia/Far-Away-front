@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<html  html="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produit</title>
+</head>
+<link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link th:href="@{/style/product.css}" rel="stylesheet">
+<link th:href="@{/style/style.css}" rel="stylesheet">
+<link th:href="@{/font/ProductSansRegular.ttf}">
+<body>
+<nav class="navbar">
+    <div class="navbar-brand">
+        <img th:src="@{images/logo-space.png}" alt="logo far away" width="60" height="50"/>
+    </div>
+    <div>
+        <ul class="nav justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/home}">Accueil</a>
+            </li>
+            <div>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/basket}">Panier</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>
+    <main>
+        <div id="product-details" class="container">
+            <h2 th:text="${product.getName()}"></h2>
+            <div>
+                <ul id="product-description" class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="'Description détaillée : ' + ${product.getDetailedDescription()}"></li>
+                    <li class="list-group-item" th:text="'Prix : ' + ${product.getPrice()} + '€'"></li>
+                    <li class="list-group-item" th:text="'Catégorie : ' + ${product.getCategory()}"></li>
+                </ul>
+            </div>
+
+            <div id="product-buttons" >
+                <form method="GET" th:action="@{/update/product/{productId}(productId = ${product.getId()})}">
+                    <button type="submit" class="btn btn-secondary">Modifier le produit</button>
+                </form>
+                <form method="POST" th:action="@{delete/product/{productId}(productId = ${product.getId()})}">
+                    <button type="submit" class="btn btn-danger">Supprimer le produit</button>
+                </form>
+                <form method="POST" th:action="@{addToBasket/{productId}(productId = ${product.getId()})}">
+                    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="comments-section" class="container">
+            <div>
+                <h3>Commentaires et évaluations</h3>
+                <h5 th:text="'Moyenne des évaluations utilisateurs : ' + ${averageRating}"></h5>
+                <br>
+            </div>
+            <h4>Mes commentaires</h4>
+            <div id="my-comments">
+                <div id="my-old-comments" class="container">
+                    <div th:each="comment:${currentUserComments}">
+                        <b>Evaluation : </b>
+                        <p th:text="${comment.getRating()} + '/5'"></p>
+                        <b>Commentaire : </b>
+                        <p th:text="${comment.getText()}"></p>
+                        <div id="my-old-comments-buttons">
+                            <form method="GET" th:action="@{update/comment/{commentId}(commentId = ${comment.getId()})}">
+                                <button type="submit" class="btn btn-secondary">Modifier le commentaire</button>
+                            </form>
+                            <form method="POST" th:action="@{delete/comment/{productId}/{commentId}(productId = ${comment.getIdProduct()},commentId = ${comment.getId()})}">
+                                <button type="submit" class="btn btn-danger">Supprimer le commentaire</button>
+                            </form>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <form id="add-comment" method="POST" th:action="@{addComment/{productId}(productId = ${product.getId()})}" th:object="${emptyComment}">
+                    <input type="text" name="new-comment" placeholder="Ajouter un commentaire" th:field="*{text}" required><br>
+                    <label for="evaluation">Evaluation du produit (entre 1 and 5) :</label>
+                    <input type="number" id="evaluation" name="evaluation" min="1" max="5" th:field="*{rating}" required><br>
+                    <input type="submit" class="btn btn-secondary" value="Ajouter">
+                </form>
+            </div>
+            <hr>
+            <h4>Commentaires et évaluations des utilisateurs</h4>
+            <div id="other-comments">
+                <div id="other-comment-evaluation" class="container">
+                    <div th:each="comment:${otherUsersComments}">
+                        <h5 th:text="${comment.getAuthor().getNickname()}">Nom d'utilisateur</h5>
+                        <b>Evaluation : </b>
+                        <p th:text="${comment.getRating()} + '/5'"></p>
+                        <b>Commentaire : </b>
+                        <p th:text="${comment.getText()}"></p>
+                        <div id="delete-comment">
+                            <form method="POST" th:action="@{delete/comment/{productId}/{commentId}(productId = ${comment.getIdProduct()},commentId = ${comment.getId()})}">
+                                <button type="submit" class="btn btn-danger">Supprimer le commentaire</button>
+                            </form>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
