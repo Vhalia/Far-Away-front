@@ -1,0 +1,43 @@
+#product-description{
+    background-color: var(--not-realy-black);
+}
+
+.list-group-item{
+    background-color: transparent;
+    border-color: white;
+}
+
+#product-buttons{
+    text-align: right;
+}
+
+#comments-section{
+    background-color: var(--dark-blue);
+    border-radius: 10px;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+#my-comments{
+    background-color: var(--light-dark-blue);
+    border-radius: 10px;
+    padding: 2%;
+
+}
+
+#other-comment-evaluation{
+    background-color: var(--light-dark-blue);
+    border-radius: 10px;
+    margin-bottom: 3%;
+    padding: 2%;
+}
+
+#delete-comment{
+    text-align: right;
+}
+
+hr{
+    border-color: white;
+    width: 100%;
+}
